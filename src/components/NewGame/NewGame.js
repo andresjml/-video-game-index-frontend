@@ -1,7 +1,14 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {BASE_URL} from '../../constraints/index'
 
 function NewGame({onNewItem}) {
+    const [genres, setGenres]=useState([])
+
+    useEffect(()=>{
+        fetch(BASE_URL + '/genres')
+            .then(r=>r.json())
+            .then(setGenres)
+    },[])
 
     const[formData, setformData]=useState({
         title: "",
@@ -43,6 +50,10 @@ function NewGame({onNewItem}) {
           
     }
 
+    const displayGenres = genres.map((genre=>{
+        return <option  value={genre.id} >{genre.id+'-'+genre.name}</option>
+    }))
+
     return (
         <div className="row justify-content-start">
             <h1>New Game</h1>
@@ -69,23 +80,20 @@ function NewGame({onNewItem}) {
                         placeholder="description"
                         onChange={handleInputChange}
                     />
-                </div>
-                <div className="col-5">
-                    Genre ID:
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="genre_id"
-                        value={formData.genre_id}
-                        placeholder="Genre ID"
-                        onChange={handleInputChange}
-                    />
+                </div>                
+                <div className="col-5 pt-2">
+                    Genre:
+                    <div className="input-group-prepend">                        
+                    </div>
+                    <select className="custom-select" id="inputGroupSelect01" name='genre_id' value ={formData.genre_id} onChange={handleInputChange} >
+                        {displayGenres}
+                    </select>
                 </div>
                 
             
                 
                 
-                <div className="col">
+                <div className="col pt-2">
                 <button type="submit" className="btn btn-success">
                     Submit
                 </button>

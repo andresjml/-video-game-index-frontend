@@ -8,7 +8,7 @@ function Form({toggle,game, onChangeForm, onEditGame}){
         fetch(BASE_URL + '/genres')
             .then(r=>r.json())
             .then(setGenres)
-    },[toggle])
+    },[])
 
     if (!toggle) return null;
 
@@ -40,8 +40,9 @@ function Form({toggle,game, onChangeForm, onEditGame}){
     
     const displayGenres = genres.map((genre=>{
         return <option  value={genre.id} >{genre.id+'-'+genre.name}</option>
-}))
+    }))
 
+   
     return(
         <form onSubmit={handleSubmit} >
             <div className="form-row">

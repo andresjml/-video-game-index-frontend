@@ -40,7 +40,7 @@ export default function GameContainer() {
         setGames(updatedGames);
     }
 
-    const displayGames = games.map((game=>{
+    const displayGames = games.map((game=>{  
                return <Games key={game.id} game={game} onEditGame={handleEditGame} onDelete={handleDeleteGame}/>
     }))
 
