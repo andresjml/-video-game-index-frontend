@@ -1,8 +1,14 @@
-import React from "react"
+import React,{useState, useEffect} from "react"
 import {BASE_URL} from '../../constraints/index'
 
 function Form({toggle,game, onChangeForm, onEditGame}){
-    
+    const [genres, setGenres]=useState([])
+
+    useEffect(()=>{
+        fetch(BASE_URL + '/genres')
+            .then(r=>r.json())
+            .then(setGenres)
+    },[])
 
     if (!toggle) return null;
 
@@ -29,16 +35,17 @@ function Form({toggle,game, onChangeForm, onEditGame}){
           body: JSON.stringify(gameToUpdate),
         })
           .then(res => res.json())
-          .then(onEditGame)
-          
-          
-         
+          .then(onEditGame)   
     }
     
+    const displayGenres = genres.map((genre=>{
+        return <option  value={genre.id} >{genre.id+'-'+genre.name}</option>
+}))
+
     return(
         <form onSubmit={handleSubmit} >
             <div className="form-row">
-                <div className="col-5 pt-4">
+                <div className="col-5 pt-2">
                     Title: 
                     <input
                         className="form-control"
@@ -49,7 +56,7 @@ function Form({toggle,game, onChangeForm, onEditGame}){
                         onChange={handleInputChange}
                     />
                 </div>
-                <div className="col-5">
+                <div className="col-5 pt-2">
                     Description:
                     <input
                         className="form-control"
@@ -60,22 +67,21 @@ function Form({toggle,game, onChangeForm, onEditGame}){
                         onChange={handleInputChange}
                     />
                 </div>
-                <div className="col-5">
-                    Genre ID:
-                    <input
-                        className="form-control"
-                        type="text"
-                        name="genre_id"
-                        value={genre_id}
-                        placeholder="Genre ID"
-                        onChange={handleInputChange}
-                    />
+                <div className="col-5 pt-2">
+                    Genre:
+                    <div className="input-group-prepend">
+                        {/*<label className="input-group-text" for="inputGroupSelect01">Options</label>*/}
+                    </div>
+                    <select className="custom-select" id="inputGroupSelect01" name='genre_id' value ={genre_id} onChange={handleInputChange} >
+                        {displayGenres}
+                    </select>
                 </div>
+                
                 
             
                 
                 
-                <div className="col">
+                <div className="col-5 pt-2">
                 <button type="submit" className="btn btn-success">
                     Submit
                 </button>
