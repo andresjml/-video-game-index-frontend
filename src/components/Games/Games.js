@@ -37,7 +37,7 @@ function Games({game, onEditGame, onDelete}){
                 
                 <div className="card-body">
                     <h5 className="card-title">{title}</h5>
-                    <p className="card-text">Description:{description}</p>            
+                    <p className="card-text">Description: {description}</p>            
                     <p className="card-text">Genre ID: {genre_id}</p>
                                         
                     <button className="btn btn-primary me-2" onClick={handleUpdateclick}>Update</button>

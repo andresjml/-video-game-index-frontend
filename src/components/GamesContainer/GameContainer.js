@@ -3,9 +3,12 @@ import {BASE_URL} from '../../constraints/index'
 import Games from '../Games/Games'
 import NewGame from '../NewGame/NewGame'
 
+
 export default function GameContainer() {
     const[games,setGames]=useState([])
     const[showNewGame, setShowNewGame]=useState(false)
+    
+
 
     useEffect(()=>{
         fetch(BASE_URL +  'games')
@@ -53,5 +56,6 @@ export default function GameContainer() {
             
         </div>
     )
+
+    
 }
-{/*comment*/}

@@ -8,7 +8,7 @@ function Form({toggle,game, onChangeForm, onEditGame}){
         fetch(BASE_URL + '/genres')
             .then(r=>r.json())
             .then(setGenres)
-    },[])
+    },[toggle])
 
     if (!toggle) return null;
 
@@ -69,8 +69,7 @@ function Form({toggle,game, onChangeForm, onEditGame}){
                 </div>
                 <div className="col-5 pt-2">
                     Genre:
-                    <div className="input-group-prepend">
-                        {/*<label className="input-group-text" for="inputGroupSelect01">Options</label>*/}
+                    <div className="input-group-prepend">                        
                     </div>
                     <select className="custom-select" id="inputGroupSelect01" name='genre_id' value ={genre_id} onChange={handleInputChange} >
                         {displayGenres}

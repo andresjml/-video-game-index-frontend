@@ -45,7 +45,7 @@ function NewGame({onNewItem}) {
 
     return (
         <div className="row justify-content-start">
-            <h1>New Item</h1>
+            <h1>New Game</h1>
             <form onSubmit={handleSubmit}>
             <div className="form-row">
                 <div className="col-5">
