@@ -8,7 +8,7 @@ import Game from '../Game/Game'
 
 export default function GameContainer() {
     const[games,setGames]=useState(null)
-    const[edit, setEdit]=useState(false)
+    const [toggle, setToggle]=useState(false)
    
     //READ
 
@@ -87,7 +87,11 @@ export default function GameContainer() {
 
     return (
         <div>
-            <NewGame createGame={createGame} />
+            <button className="btn btn-primary" onClick={()=>setToggle(!toggle)}>Add New Game</button>
+            {toggle &&(
+                <NewGame createGame={createGame} />
+            )}
+            
             <div className="container">{games && populateGames()}</div>            
         </div>
         

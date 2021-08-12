@@ -3,13 +3,13 @@ import {BASE_URL} from '../../constraints/index'
 
 function NewGame({createGame}) {
     const [genres, setGenres]=useState([])
-    const [platforms, setPlatforms]=useState([])
+    
     
     const[formData, setformData]=useState({
         title: "",
         description: "",
-        genre_id: "",
-        platforms: ""
+        genre_id: ""
+        
     }) 
 
     function handleInputChange(event){
@@ -25,11 +25,7 @@ function NewGame({createGame}) {
             .then(setGenres)
     },[])
 
-    useEffect(()=>{
-        fetch(BASE_URL + '/platforms')
-            .then(r=>r.json())
-            .then(setPlatforms)
-    },[])
+    
 
     function handleSubmit(event){
         event.preventDefault()
@@ -37,17 +33,15 @@ function NewGame({createGame}) {
         setformData({
             title: "",
             description: "",
-            genre_id: "",
-            platforms:""
+            genre_id: ""
+            
         })          
     }
 
     const displayGenres = genres.map((genre=>{
         return <option  value={genre.id} >{genre.id+'-'+genre.name}</option>
     }))
-    const displayPlatforms = platforms.map((platform=>{
-        return <option  value={platform.id} >{platform.id+'-'+platform.name}</option>
-    }))
+    
 
     return (
         <div className="row justify-content-start">
@@ -85,15 +79,7 @@ function NewGame({createGame}) {
                         {displayGenres}
                     </select>
                 </div>
-                <div className="col-5 pt-2">
-                    Platform:
-                    <div className="input-group-prepend">                        
-                    </div>
-                    <select className="custom-select" id="inputGroupSelect01" name='platforms' value ={formData.platforms} onChange={handleInputChange} >
-                        <option selected>Choose...</option>
-                        {displayPlatforms}
-                    </select>
-                </div>
+                
             
                 
                 
