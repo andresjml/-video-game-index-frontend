@@ -69,22 +69,15 @@ export default function GameContainer() {
         fetch(BASE_URL + "games/" + game.id, {
             method: "DELETE",
           })
-          .then(res => res.json())
-          .then(json=>{
-            const updatedGames = games.filter((game) =>
-            game.id !== json.id)
-
-          setGames(updatedGames);
-       
-        });
-          
+          const newGames = games.filter((g) => g.id !== game.id);
+                setGames(newGames);
     }
     
     
     
     
     function populateGames(){
-            return games.map(game=> <Game key={game.id} game={game} updatedGame={handleUpdateGame} deleteGame={handleDelete}/>)
+        return games.map(game=> <Game key={game.id} game={game} updatedGame={handleUpdateGame} deleteGame={handleDelete}/>)
     }
    
 
