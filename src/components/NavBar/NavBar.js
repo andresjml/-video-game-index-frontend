@@ -14,6 +14,8 @@ function NavBar() {
                     <div className="navbar-nav">
                         <Link className="nav-link active" aria-current="page" to="/games">Games</Link>                        
                         <Link className="nav-link active" aria-current="page" to="/genres">Genres</Link>
+                        <Link className="nav-link active" aria-current="page" to="/platforms">Platforms</Link>
+                        <Link className="nav-link active" aria-current="page" to="/platforms">Game/Platform</Link>
                         
                         
                         

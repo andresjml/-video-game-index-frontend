@@ -1,9 +1,10 @@
 import './App.css'
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NavBar from "../NavBar/NavBar"
-import GamesContainer from "../GamesContainer/GameContainer"
-import Genres from "../Genres/Genres"
+import GameContainer from "../GameContainer/GameContainer"
+import GenreContainer from "../GenreContainer/GenreContainer"
 import GameDetails from '../GameDetails/GameDetails'
+import PlatformContainer from '../PlatformContainer/PlatformContainer';
 
 function App() {
 
@@ -17,14 +18,17 @@ function App() {
               <h2>Home Page</h2>
             </Route>
             <Route exact path='/games'>
-              <GamesContainer />
+              <GameContainer />
             </Route>
             <Route path='/games/:id'>
               <GameDetails />
             </Route>
 
-          <Route path='/genres/'>
-              <Genres />
+          <Route path='/genres'>
+              <GenreContainer />
+          </Route>
+          <Route path='/platforms'>
+              <PlatformContainer />
           </Route>
           <Route path="*">
               <h1> 404 not found</h1>

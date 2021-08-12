@@ -1,5 +1,4 @@
 import React, {useEffect,useState} from 'react'
-import { Link } from 'react-router-dom'
 import {BASE_URL} from '../../constraints/index'
 import NewGame from '../NewGame/NewGame'
 import './GameContainer.css'
@@ -34,7 +33,8 @@ export default function GameContainer() {
             body: JSON.stringify(gameToCreate),
           })
             .then(res => res.json())
-            .then(json=>setGames([...games, json]));
+            .then(json=>setGames([...games, json]))
+            .finally(setToggle(false));
     }
 
     //UPDATE
@@ -87,6 +87,7 @@ export default function GameContainer() {
 
     return (
         <div>
+            <h3 class="display-1">Games</h3>
             <button className="btn btn-primary" onClick={()=>setToggle(!toggle)}>Add New Game</button>
             {toggle &&(
                 <NewGame createGame={createGame} />

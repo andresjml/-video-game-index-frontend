@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from "react-router-dom"
-import Form from '../Form/Form'
 import { BASE_URL } from '../../constraints'
 
 export default function Game({game, updatedGame,deleteGame}) {
@@ -8,7 +7,7 @@ export default function Game({game, updatedGame,deleteGame}) {
     const [newGame, setNewGame]=useState({...game})
     const [genres, setGenres]=useState([])
 
-    const {id, title,description,genre_id}=game
+    
 
      
     useEffect(()=>{
@@ -81,7 +80,7 @@ export default function Game({game, updatedGame,deleteGame}) {
                                     Genre:
                                     <div className="input-group-prepend">                        
                                     </div>
-                                    <select className="custom-select" id="inputGroupSelect01" name='genre_id' value ={genre_id} onChange={handleInputChange} >
+                                    <select className="custom-select" id="inputGroupSelect01" name='genre_id' value ={newGame.genre_id} onChange={handleInputChange} >
                                         {displayGenres}
                                     </select>
                                 </div>
@@ -106,8 +105,7 @@ export default function Game({game, updatedGame,deleteGame}) {
 
 
                             </div>
-                        </form>)
-                              
+                        </form>)                         
 
 
 
