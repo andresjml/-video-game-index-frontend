@@ -40,11 +40,11 @@ export default function Game({game, updatedGame,deleteGame}) {
 
 
     return (
-        <div className="col-lg-4 py-3">
+        <div className="col py-3 lg-4" >
             <div className="card" style={{width: '18rem'}} >
                 <div className="card-body">
                     <h5 className="card-title">{game.title}</h5>
-                    <h6 className="card-subtitle mb-2 text-muted"></h6>
+                    
                                             
                     <Link to={`games/${game.id}`} className="btn btn-primary">Details</Link>
                     <button className="btn btn-primary" onClick={handleEditClick}>Edit</button>  

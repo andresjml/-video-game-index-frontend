@@ -86,14 +86,16 @@ export default function GameContainer() {
        
 
     return (
-        <div>
-            <h3 class="display-1">Games</h3>
+        <div className="container">
+            <h3 className="display-1 text-center">Games</h3>
+            <div  className="row">
             <button className="btn btn-primary" onClick={()=>setToggle(!toggle)}>Add New Game</button>
+            </div>
             {toggle &&(
                 <NewGame createGame={createGame} />
             )}
             
-            <div className="container">{games && populateGames()}</div>            
+            <div className="row">{games && populateGames()}</div>            
         </div>
         
     )

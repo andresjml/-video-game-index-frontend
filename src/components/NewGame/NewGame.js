@@ -39,7 +39,7 @@ function NewGame({createGame}) {
     }
 
     const displayGenres = genres.map((genre=>{
-        return <option  value={genre.id} >{genre.id+'-'+genre.name}</option>
+        return <option  key={genre.id} value={genre.id} >{genre.id+'-'+genre.name}</option>
     }))
     
 
@@ -75,7 +75,7 @@ function NewGame({createGame}) {
                     <div className="input-group-prepend">                        
                     </div>
                     <select className="custom-select" id="inputGroupSelect01" name='genre_id' value ={formData.genre_id} onChange={handleInputChange} >
-                        <option selected>Choose...</option>
+                        <option value>Choose...</option>
                         {displayGenres}
                     </select>
                 </div>

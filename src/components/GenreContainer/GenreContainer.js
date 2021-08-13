@@ -5,7 +5,8 @@ import {BASE_URL} from '../../constraints/index'
 export default function Genres() {
     const[genres,setGenres]=useState([])
     const [toggle, setToggle]=useState(false)
-    const [newGenre, setNetGenre]=useState({name:""})
+    const [newGenre, setNewGenre]=useState({name:""})
+    
     //READ
 
     useEffect(()=>{
@@ -31,7 +32,7 @@ export default function Genres() {
     }
 
     function handleInputChange(event) {
-        setNetGenre({
+        setNewGenre({
             ...newGenre, 
             [event.target.name]:event.target.value
         })
@@ -44,6 +45,8 @@ export default function Genres() {
         setToggle(false)         
     }
 
+    //DELETE
+
     function handleDelete(genre){
         fetch(BASE_URL + "genres/" + genre.id, {
             method: "DELETE",
@@ -52,7 +55,7 @@ export default function Genres() {
                 setGenres(newGenres);
     }
     
-
+    //MAPING GENRES
     const displayGenres = genres.map((genre=>{
            return (<div className="col-lg-4 py-3">
                 <div className="card" style={{width: '15rem'}}>                    
@@ -68,8 +71,10 @@ export default function Genres() {
 
     return(
         <>
-            <h3 class="display-1">Genres</h3>
-            <button className="btn btn-primary" onClick={()=>setToggle(!toggle)}>Add New Genre</button>   
+            <h3 class="display-1 text-center">Genres</h3>
+            <button className="btn btn-primary" onClick={()=>setToggle(!toggle)}>Add New Genre</button>  
+
+            {/*it shows only if toggle is true*/}
             {toggle &&(
                 <form onSubmit={handleSubmit} >
                     <div className="form-row">
@@ -92,6 +97,8 @@ export default function Genres() {
                     </div>
                 </form>)
             }
+
+
            {displayGenres}
         </>
     )

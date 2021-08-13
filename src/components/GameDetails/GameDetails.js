@@ -32,8 +32,8 @@ function GameDetails(){
                             <h5 className="card-subtitle mb-2 text-muted">Genre id:</h5>                        
                             <p className="card-text">{game.genre_id}</p>
                             <h5 className="card-subtitle mb-2 text-muted">Platforms:</h5> 
-                            {game.platforms.map(platform => <Platform platform={platform} />)}
-                            <Link to='/games' ClassName="card-link">Back to Games Index</Link>                        
+                            {game.platforms.map(platform => <Platform key={platform.id} platform={platform} />)}
+                            <Link to='/games' className="card-link">Back to Games Index</Link>                        
                         </div>
                     </div>
                 </>
