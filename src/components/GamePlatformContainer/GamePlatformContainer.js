@@ -64,7 +64,7 @@ export default function GamePlatformContainer() {
                 <div className="card" style={{width: '18rem'}}>                    
                     <div className="card-body">
                         <h5 className="card-subtitle mb-2 text-muted">Relationship:{gamePlatform.id}</h5>
-                        <h5 className="card-title">game_id:{gamePlatform.game_id}-platform_id:{gamePlatform.platform_id}</h5>
+                        <h5 className="card-title">game id:{gamePlatform.game_id} / platform_id:{gamePlatform.platform_id}</h5>
                         <button className="btn btn-danger" onClick={()=>handleDelete(gamePlatform)}>Delete Relationship</button>
                     </div>          
                 </div>

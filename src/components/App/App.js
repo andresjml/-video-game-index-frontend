@@ -6,6 +6,7 @@ import GenreContainer from "../GenreContainer/GenreContainer"
 import GameDetails from '../GameDetails/GameDetails'
 import PlatformContainer from '../PlatformContainer/PlatformContainer';
 import GamePlatformContainer from '../GamePlatformContainer/GamePlatformContainer';
+import Home from '../Home/Home'
 function App() {
 
 
@@ -15,7 +16,7 @@ function App() {
         <NavBar />
           <Switch>
             <Route exact path="/">
-              <h2>Home Page</h2>
+              <Home />
             </Route>
             <Route exact path='/games'>
               <GameContainer />
